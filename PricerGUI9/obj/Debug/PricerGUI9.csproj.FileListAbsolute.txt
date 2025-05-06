@@ -1,0 +1,13 @@
+C:\Users\Andrew\source\repos\PricerGUI9\PricerGUI9\bin\Debug\PricerGUI9.exe.config
+C:\Users\Andrew\source\repos\PricerGUI9\PricerGUI9\bin\Debug\PricerGUI9.exe
+C:\Users\Andrew\source\repos\PricerGUI9\PricerGUI9\bin\Debug\PricerGUI9.pdb
+C:\Users\Andrew\source\repos\PricerGUI9\PricerGUI9\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Andrew\source\repos\PricerGUI9\PricerGUI9\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Andrew\source\repos\PricerGUI9\PricerGUI9\obj\Debug\PricerGUI9.csproj.AssemblyReference.cache
+C:\Users\Andrew\source\repos\PricerGUI9\PricerGUI9\obj\Debug\PricerGUI9.Form1.resources
+C:\Users\Andrew\source\repos\PricerGUI9\PricerGUI9\obj\Debug\PricerGUI9.Properties.Resources.resources
+C:\Users\Andrew\source\repos\PricerGUI9\PricerGUI9\obj\Debug\PricerGUI9.csproj.GenerateResource.cache
+C:\Users\Andrew\source\repos\PricerGUI9\PricerGUI9\obj\Debug\PricerGUI9.csproj.CoreCompileInputs.cache
+C:\Users\Andrew\source\repos\PricerGUI9\PricerGUI9\obj\Debug\PricerGUI9.csproj.Up2Date
+C:\Users\Andrew\source\repos\PricerGUI9\PricerGUI9\obj\Debug\PricerGUI9.exe
+C:\Users\Andrew\source\repos\PricerGUI9\PricerGUI9\obj\Debug\PricerGUI9.pdb
