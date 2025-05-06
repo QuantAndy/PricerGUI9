@@ -13,6 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using Newtonsoft.Json;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
@@ -31,13 +32,19 @@ namespace PricerGUI9
         public Form1()
         {
             InitializeComponent();
-            LoadDataFromDatabase("PricingData");
-            LoadDataFromDatabase2("USDIRData");
-            LoadDataFromDatabase3("GBPIRData");
+            loadDataFromDatabase("PricingData");
+            updateChart("USDIRData", chart1, dataGridView2);
+            updateChart("GBPIRData", chart2, dataGridView3);
+
+            //dataGridView1 is the main top left grid with all of the FX products and tenors in it. It is meant for the trader to interact with it
             dataGridView1.CellValueChanged += DataGridView1_CellValueChanged;
             dataGridView1.UserAddedRow += DataGridView1_UserAddedRow;
-            button1.Click += new EventHandler(button1_Click);
-            button2.Click += new EventHandler(button2_Click);
+
+            //pull market data button
+            pullMarketDataBtn.Click += new EventHandler(pullMarketData_Click);
+
+            //perform lengthy compute button
+            doLengthyComputeBtn.Click += new EventHandler(doLengthCompute_Click);
 
 
             progressBar1.Minimum = 0;
@@ -47,10 +54,10 @@ namespace PricerGUI9
         }
 
         //lengthy compute button
-        private void button2_Click(object sender, EventArgs e)
+        private void doLengthCompute_Click(object sender, EventArgs e)
         {
 
-            button2.Enabled = false;
+            doLengthyComputeBtn.Enabled = false;
             progressBar1.Value = 0;
 
 
@@ -73,7 +80,7 @@ namespace PricerGUI9
             int largeFactorialStart = 5000;
 
 
-            button2.Enabled = false;
+            doLengthyComputeBtn.Enabled = false;
 
 
             for (int i = 1; i <= totalSteps; i++)
@@ -92,7 +99,7 @@ namespace PricerGUI9
 
             MessageBox.Show("Computation completed successfully!");
 
-            button2.Invoke((Action)(() => button2.Enabled = true));
+            doLengthyComputeBtn.Invoke((Action)(() => doLengthyComputeBtn.Enabled = true));
             
         }
 
@@ -127,8 +134,8 @@ namespace PricerGUI9
             }
         }
 
-
-        private void LoadDataFromDatabase(string tableName)
+        // general function to load SQL data from specific table onto windows forms grid
+        private void loadDataFromDatabase(string tableName)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -142,7 +149,9 @@ namespace PricerGUI9
                 chart2.Refresh();
             }
         }
-        private void LoadDataFromDatabase2(string tableName)
+
+        //updates chart and table information for USD and GBP interest rates
+        private void updateChart(string tableName, Chart targetChart, DataGridView targetGrid)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -151,42 +160,18 @@ namespace PricerGUI9
                 SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
-                dataGridView2.DataSource = dataTable;
+                targetGrid.DataSource = dataTable;
 
                 // Add data to chart1
-                chart1.Series["Series1"].Points.Clear();
+                targetChart.Series["Series1"].Points.Clear();
                 foreach (DataRow row in dataTable.Rows)
                 {
 
-                    chart1.Series["Series1"].Points.AddXY(row["Date"], row["ExpectedIR"]);
+                    targetChart.Series["Series1"].Points.AddXY(row["Date"], row["ExpectedIR"]);
                 }
 
-                chart1.Refresh();
-                chart2.Refresh();
-            }
-        }
+                targetChart.Refresh();
 
-        private void LoadDataFromDatabase3(string tableName)
-        {
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                string query = $"SELECT * FROM dbo.{tableName}";
-                dataAdapter = new SqlDataAdapter(query, conn);
-                SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
-                dataTable = new DataTable();
-                dataAdapter.Fill(dataTable);
-                dataGridView3.DataSource = dataTable;
-
-
-                chart2.Series["Series1"].Points.Clear();  
-                foreach (DataRow row in dataTable.Rows)
-                {
-
-                    chart2.Series["Series1"].Points.AddXY(row["Date"], row["ExpectedIR"]);
-                }
-
-                chart1.Refresh();
-                chart2.Refresh();
             }
         }
 
@@ -249,7 +234,7 @@ namespace PricerGUI9
                         cmd.ExecuteNonQuery();
                     }
                 }
-                LoadDataFromDatabase(tableName);
+                loadDataFromDatabase(tableName);
             }
         }
 
@@ -383,11 +368,11 @@ namespace PricerGUI9
                 }
             }
 
-            LoadDataFromDatabase("PricingData");
+            loadDataFromDatabase("PricingData");
         }
 
         // cliking this button will make a request to polygon via microservice. This functionality is async. microservice must be running already
-        private async void button1_Click(object sender, EventArgs e)
+        private async void pullMarketData_Click(object sender, EventArgs e)
         {
             string ticker = textBox1.Text.Trim();
             string startTime = maskedTextBox1.Text.Trim();
