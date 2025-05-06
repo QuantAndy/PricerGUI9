@@ -27,7 +27,6 @@ namespace PricerGUI9
         private SqlDataAdapter dataAdapter;
         private DateTime lastCheckedTime = DateTime.MinValue;
         private System.Timers.Timer timer;
-        private CancellationTokenSource _cts;
 
         public Form1()
         {
@@ -60,20 +59,11 @@ namespace PricerGUI9
             doLengthyComputeBtn.Enabled = false;
             progressBar1.Value = 0;
 
-
-            if (_cts != null)
-                _cts.Cancel();
-
-
-            _cts = new CancellationTokenSource();
-            var token = _cts.Token;
-
-
-            Task.Run(() => PerformLengthyComputation(token), token);
+            Task.Run(() => PerformLengthyComputation());
         }
 
         // simulates lengthy computation that is done asynchronously
-        private async void PerformLengthyComputation(CancellationToken token)
+        private async void PerformLengthyComputation()
         {
             
             int totalSteps = 100000;
@@ -86,13 +76,9 @@ namespace PricerGUI9
             for (int i = 1; i <= totalSteps; i++)
             {
 
-                long result = await Task.Run(() => ComputeFactorial(largeFactorialStart + i), token);
+                long result = await Task.Run(() => ComputeFactorial(largeFactorialStart + i));
 
-                if (token.IsCancellationRequested)
-                {
-                    MessageBox.Show("Computation was cancelled.");
-                    return;
-                }
+                
 
                 UpdateProgress(i, totalSteps);
             }

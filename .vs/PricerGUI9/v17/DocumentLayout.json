@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\Andrew\\source\\repos\\PricerGUI9\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E4565417-9DB2-425E-A3CE-FDBF841094A9}|PricerGUI9\\PricerGUI9.csproj|C:\\Users\\Andrew\\source\\repos\\PricerGUI9\\pricergui9\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E4565417-9DB2-425E-A3CE-FDBF841094A9}|PricerGUI9\\PricerGUI9.csproj|c:\\users\\andrew\\source\\repos\\pricergui9\\pricergui9\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E4565417-9DB2-425E-A3CE-FDBF841094A9}|PricerGUI9\\PricerGUI9.csproj|solutionrelative:pricergui9\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -38,8 +38,7 @@
               "RelativeToolTip": "fetch_data_service.py",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2025-05-06T17:26:03.346Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-06T17:26:03.346Z"
             },
             {
               "$type": "Document",
@@ -49,7 +48,7 @@
               "RelativeDocumentMoniker": "PricerGUI9\\Form1.cs",
               "ToolTip": "C:\\Users\\Andrew\\source\\repos\\PricerGUI9\\PricerGUI9\\Form1.cs",
               "RelativeToolTip": "PricerGUI9\\Form1.cs",
-              "ViewState": "AgIAAEsAAAAAAAAAAAA6wFoAAAAyAAAAAAAAAA==",
+              "ViewState": "AgIAADQAAAAAAAAAAAAswEwAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-06T16:15:31.232Z",
               "EditorCaption": ""
@@ -64,8 +63,7 @@
               "RelativeToolTip": "PricerGUI9\\Form1.Designer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAMkAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T16:20:40.062Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-06T16:20:40.062Z"
             },
             {
               "$type": "Document",
@@ -76,8 +74,7 @@
               "ToolTip": "C:\\Users\\Andrew\\source\\repos\\PricerGUI9\\PricerGUI9\\Form1.cs [Design]",
               "RelativeToolTip": "PricerGUI9\\Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T16:09:07.842Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-05-06T16:09:07.842Z"
             }
           ]
         }
